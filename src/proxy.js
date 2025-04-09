@@ -38,7 +38,8 @@ async function proxy(request) {
 	try {
 		const url = new URL(request.url);
 		const urlParams = url.searchParams;
-		const encodedUrl = urlParams.get('url');
+		const targetUrl = urlParams.get('url');
+		
 		const headersBase64 = urlParams.get('headers');
 
 		if (!encodedUrl) {
