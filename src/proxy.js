@@ -42,7 +42,7 @@ async function proxy(request) {
 		
 		const headersBase64 = urlParams.get('headers');
 
-		if (!encodedUrl) {
+		if (!targetUrl) {
 			return new Response('"url" query parameters are required', {
 				status: 400,
 				headers: {
@@ -51,7 +51,7 @@ async function proxy(request) {
 			});
 		}
 
-		const mediaUrl = atob(decodeURIComponent(encodedUrl));
+		const mediaUrl = atob(decodeURIComponent(targetUrl));
 		const decodedHeaders = decodeHeaders(headersBase64);
 
 		if (!decodedHeaders) {
